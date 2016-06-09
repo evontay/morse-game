@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Morse Game</title>
+    <link href='https://fonts.googleapis.com/css?family=Kalam:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Itim' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Poppins:400,500,300,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body><div id="container">
+        <header class="gamemode poppins">
+            <div id="score" class="disappear">
+                <h5 class="white">Score</h5>
+                <p>0</p>
+            </div>
+        <div id="morsechart">
+            <div id="testbox" class="smallbox"></div>
+            <div class="hideshow"><p>Hide/Show</p></div>
+        </div>
+        <div id="time" class="disappear">
+            <h5 class="white">Chart Time</h5>
+            <p class="count">01:00</p>
+        </div>
+    </header>
+    
+    <main>
+        <div class="pregame">
+        <p class="hand">Click <strong>HIDE/SHOW</strong> to toggle open the morse code chart. <br>
+        Memorise this chart as much as possible. <br>
+        During gameplay if you need to, toggle hide/show to refer to it again. <br>
+        But watch out. You only have 30 seconds of total chart view time during the game, use it wisely.</p>
+        
+        <!--<h5 class="poppins">When you're ready to play, click start.</h5>-->
+        
+        <a><div id="bigbtn" class="poppins"><h3>Start</h3></div></a>
+        </div>
+        
+        <div id="dotdashgame" class="disappear">
+            <div id="qn" class="poppins">
+                <h3>Question appears here.</h3>
+            </div>
+            <form id="playerinput" type="text" value="your answer"></form>
+            <div id="bigbtn" class="poppins">
+                <h3>Enter</h3>
+            </div>
+            <div id="status" class="disappear"><h4 class="hand">Correct!</h4></div>
+        </div>
+    </main>
+    
+    
+    
+    <script defer src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+    <script defer src="./morse.js"></script>
+</div></body>
+</html>
