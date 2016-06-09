@@ -44,6 +44,7 @@ console.log("App is running.");
     $('.hideshow').on('click', function(event){
         $('#testbox').toggleClass('bigbox');
         time();
+              
         $('.count').html(timeLeft);
     });
 });
@@ -63,6 +64,9 @@ var time = function (){
         $('.count').html(timeLeft);
         if (timeLeft === 0) {
             clearInterval(interval);
+            $('#prompts').addClass('smaller').html("Ran out of chart viewing time. Good luck.");
+            $('#testbox').hide();
+            $('.hideshow').hide();
         }
     }, 1000);
 }; 
@@ -85,6 +89,7 @@ var updateDisplay = function(){
     if (gameA.isGameOver === true) {
         $('#qn h3').html("");
         $('#prompts h3').html("Game is over.");
+        $('#status').hide();
     }
     else {
         $('#qn h3').html(gameA.questions[gameA.currentQuestion].prompt);
@@ -112,6 +117,7 @@ var displayMsg = function(input) {
         return 'Wrong! Better luck for this next one.';
     }
 };
+
 
 $('#status').text(displayMsg(gameA.questions[gameA.currentQuestion]));
 
@@ -151,6 +157,7 @@ $('#enter').on('click', function(event) {
     var input = $('#playerinput').val();
     console.log("user input:" + input);
     console.log("player score:" + playerScore);
+    $('#status').removeClass('disappear');
     // reset form: $('#playerInput').reset();
     
     playTurn(input);

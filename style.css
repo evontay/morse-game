@@ -216,6 +216,15 @@ strong {
 #prompts {
     color: white;
     margin: 50px auto;
+    
+}
+
+.smaller {
+    font-size: 1.5em;
+    font-weight:700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: -50px;
 }
 
 #qn {
@@ -228,7 +237,7 @@ form #playerinput {
     height: 50px;
     width: 500px;
     font-size: 1.5em;
-    margin: 50px auto;
+    margin: 50px auto 30px;
     padding: 10px 20px;
     text-align: center;
 }
@@ -254,4 +263,5 @@ form #playerinput {
     text-transform: 2px;
     font-size: 1.2em;
     font-family: 'Itim', sans-serif;
+    text-transform: uppercase;
 }
