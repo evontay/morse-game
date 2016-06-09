@@ -29,6 +29,7 @@ var gameA = {
 //===== STARTER VARIABLES =====//
 var playerScore;
 var timeLeft = 60; //chart time countdown
+var interval=0;
 console.log(timeLeft);
 
 $(document).ready(function(){
@@ -38,14 +39,19 @@ console.log("App is running.");
 
 
 
-
 //===== HIDE SHOW CHART =====//
 
     $('.hideshow').on('click', function(event){
         $('#testbox').toggleClass('bigbox');
-        time();
-              
+   
         $('.count').html(timeLeft);
+         
+         if(interval!==0 && timeLeft!==0) {
+             clearInterval(interval);
+             return;
+         } else {
+         time();
+         }
     });
 });
 
@@ -55,10 +61,10 @@ console.log("App is running.");
 //     return timeLeft;
 // }, 1000);
 
-var interval;
+
 
 var time = function (){
-    clearInterval(interval);
+    
     interval = setInterval(function(){
         timeLeft --;
         $('.count').html(timeLeft);
@@ -68,7 +74,9 @@ var time = function (){
             $('#testbox').hide();
             $('.hideshow').hide();
         }
+     
     }, 1000);
+       
 }; 
 
 //===== START BUTTON =====//
