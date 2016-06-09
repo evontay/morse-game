@@ -98,12 +98,21 @@ button:hover {
     width: 100px;
 }
 
+#score {
+    order: 0;
+}
+
+#time {
+    order: 2;
+}
+
 #morsechart {
     flex:3;
     border: none;
     margin: 0 auto;
     text-align: center;
     top: -400px;
+    order: 1;
 }
 
 #testbox {
@@ -120,7 +129,7 @@ button:hover {
 
 .smallbox {
     transition: height 0.5s ease-out;
-    height: 40px;
+    height: 20px;
 }
 
 /*.smallbox img {
@@ -216,7 +225,25 @@ form #playerinput {
     width: 500px;
     font-size: 1.5em;
     margin: 50px auto;
-    padding: auto 20px;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+#enter {
+    color: white;
+    letter-spacing: 2px;
+    font-size: 1.3em;
+    background-color: FBB03B;
+    padding: 13px 10px 8px 10px;
+    border-radius: 50px;
+    border: 4px solid white;
+    max-width: 200px;
+    margin: 30px auto;
+    cursor: pointer;
+}
+
+#enter:hover {
+    box-shadow: 0px 5px 5px 2px darkorange;
 }
 
 #status {

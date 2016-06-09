@@ -10,14 +10,17 @@
 </head>
 <body><div id="container">
         <header class="gamemode poppins">
-            <div id="score" class="disappear">
-                <h5 class="white">Score</h5>
-                <p>0</p>
-            </div>
+            
         <div id="morsechart">
             <div id="testbox" class="smallbox"></div>
             <div class="hideshow"><p>Hide/Show</p></div>
         </div>
+        
+        <div id="score" class="disappear">
+                <h5 class="white">Score</h5>
+                <p>0</p>
+        </div>
+            
         <div id="time" class="disappear">
             <h5 class="white">Chart Time</h5>
             <p class="count">01:00</p>
@@ -40,17 +43,17 @@
             <div id="qn" class="poppins">
                 <h3>Question appears here.</h3>
             </div>
-            <form><input id="playerinput" type="text" value="your answer"></form></form>
-            <div id="bigbtn" class="poppins">
+            <form><input id="playerinput" type="text" placeholder="your answer"></form></form>
+            <div id="enter" class="poppins">
                 <h3>Enter</h3>
             </div>
-            <div id="status" class="disappear"><h4 class="hand">Correct!</h4></div>
+            <div id="status" ><h4 class="hand">Correct!</h4></div>
         </div>
     </main>
     
     
     
     <script defer src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
-    <script defer src="./morse.js"></script>
+    <script defer src="./morse-dotdash.js"></script>
 </div></body>
 </html>
