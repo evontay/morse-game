@@ -43,16 +43,29 @@ console.log("App is running.");
 
     $('.hideshow').on('click', function(event){
         $('#testbox').toggleClass('bigbox');
-        // minus seconds off timer
+        time();
         $('.count').html(timeLeft);
     });
 });
 
 //===== COUNTDOWN TIMER =====//
-var interval = setInterval(function(){
-    if (timeLeft === 0) {clearInterval(interval);}
-    return timeLeft;
-}, 1000);
+// var interval = setInterval(function(){
+//     if (timeLeft === 0) {clearInterval(interval);}
+//     return timeLeft;
+// }, 1000);
+
+var interval;
+
+var time = function (){
+    clearInterval(interval);
+    interval = setInterval(function(){
+        timeLeft --;
+        $('.count').html(timeLeft);
+        if (timeLeft === 0) {
+            clearInterval(interval);
+        }
+    }, 1000);
+}; 
 
 //===== START BUTTON =====//
 $('#bigbtn').on('click', function(event){
@@ -62,32 +75,45 @@ $('#bigbtn').on('click', function(event){
     $('#testbox').removeClass('bigbox');
     $('#dotdashgame').removeClass('disappear');
     $('#qn h3').text(gameA.questions[gameA.currentQuestion].prompt);
+    $('#prompts h3').text("Question " + (gameA.currentQuestion + 1) + " of " + numberOfQuestions());
+    console.log("Question " + (gameA.currentQuestion + 1) + " of " + numberOfQuestions());
     console.log(gameA.questions[gameA.currentQuestion]);
 });
 
 //====== UPDATES DISPLAY TEXT FOR QUESTIONS =======//
 var updateDisplay = function(){
-    $('#qn h3').html(gameA.questions[gameA.currentQuestion].prompt);
-    console.log(gameA.questions[gameA.currentQuestion]);
+    if (gameA.isGameOver === true) {
+        $('#qn h3').html("");
+        $('#prompts h3').html("Game is over.");
+    }
+    else {
+        $('#qn h3').html(gameA.questions[gameA.currentQuestion].prompt);
+        $('#prompts h3').html("Question " + (gameA.currentQuestion + 1) + " of " + numberOfQuestions());
+        console.log(gameA.questions[gameA.currentQuestion]);
+    }
 };
+
+//===== UPDATES QUESTION PROMPTS =====//
 
 
 
 //====== UPDATES DISPLAY TEXT FOR MESSAGES =======//
 var displayMsg = function(input) {
-    
+    if (gameA.isGameOver === true) {
+     $('#status').text("");   
+    }
     if (gameA.questions[gameA.currentQuestion].correctAnswer === input)
     {
         console.log("correct:" + gameA.questions[gameA.currentQuestion].correctAnswer);
         return 'Correct!';
     }
     else {
-        console.log("Wrong:" + gameA.questions[gameA.currentQuestion].correctAnswer);
-        return 'Wrong!';
+        console.log("displayMsg: Wrong!: " + gameA.questions[gameA.currentQuestion].correctAnswer);
+        return 'Wrong! Better luck for this next one.';
     }
 };
 
-$('#status').text(displayMsg(gameA.questions[gameA.currentQuestion].prompt));
+$('#status').text(displayMsg(gameA.questions[gameA.currentQuestion]));
 
 
 //===== CURRENT QUESTION =====//
@@ -113,46 +139,56 @@ var correctAnswer = function(){
 
 //===== IS GAME OVER should return a true or false =====//
 var isGameOver = function(){
-    return gameA.isGameOver;
+    return gameA.isGameOver;    
 };
 
 //===== FUNCTION TO GET USER INPUT VALUE =====//
+$('#playerInput').keyup(function(){
+    this.value = this.value.toUpperCase();
+});
+
 $('#enter').on('click', function(event) {
-    console.log('clicked enter btn');
     var input = $('#playerinput').val();
     console.log("user input:" + input);
     console.log("player score:" + playerScore);
-    
+    // reset form: $('#playerInput').reset();
     
     playTurn(input);
     updateDisplay();
-    
+       
 });
 
 
 //===== PLAY TURN =====//
 var playTurn = function(input){
-    console.log(input);
+    console.log("user:" + input);
     if (gameA.isGameOver === true) {return false;}
-    var correct = false;
+    // var correct = false;
     if (input === gameA.questions[gameA.currentQuestion].correctAnswer) {
         correct = true;
-        gameA.playerScore++;
-        
+        gameA.playerScore++ ;
+        $('#score p').html(gameA.playerScore);
+        console.log("playTurn + 1 playerScore:" + gameA.playerScore );
         console.log("correct answer:" + gameA.questions[gameA.currentQuestion].correctAnswer);
         console.log("displayMsg:" + displayMsg(input));
         $("#status").html(displayMsg(input));
     }
     if (input !== gameA.questions[gameA.currentQuestion].correctAnswer) {
         correct = false;
-        console.log("Wrong. Better luck for this next one.");
+        console.log("playTurn no playerScore:" + gameA.playerScore);
+        console.log("Playturn: Wrong. Better luck for this next one.");
+        displayMsg(input);
+        $("#status").html(displayMsg(input));
         // to update displayMsg to say 'Wrong. Please try again'
         //vibrating input field for 0.5s.
         //if currentQuestion is wrong for more than 3x, go to next qn.
     }
     ++ gameA.currentQuestion;
-    if (gameA.currentQuestion === numberOfQuestions()) {gameA.isGameOver = true;}
-    return correct;
+    if (gameA.currentQuestion === numberOfQuestions()) {
+        gameA.isGameOver = true;
+        
+    }
+    // return correct;
 };
 
 

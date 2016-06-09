@@ -18,7 +18,7 @@ body {
 }
 
 .hand {
-    font-family: 'Itim', cursive;
+    font-family: 'Itim', sans-serif;
 }
 
 .poppins {
@@ -213,6 +213,10 @@ strong {
     display: none;
 }
 
+#prompts {
+    color: white;
+    margin: 50px auto;
+}
 
 #qn {
     color: darkslategrey;
@@ -248,4 +252,6 @@ form #playerinput {
 
 #status {
     text-transform: 2px;
+    font-size: 1.2em;
+    font-family: 'Itim', sans-serif;
 }
