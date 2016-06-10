@@ -180,6 +180,10 @@ button:hover {
 }
 
 /*=========== MAIN CONTENT AREA ===========*/
+#beepqn img{
+    cursor: pointer;
+    width: 80px;
+}
 
 main {
     text-align: center;

@@ -27,6 +27,11 @@ $('#bigbtn').on('click', function(event){
     // call first question to appear
 });
 
+//PLAY AUDIO ON CLICK
+$('#beepqn').on('click', function(event){
+    audio0b.play();
+});
+
 //====== UPDATES DISPLAY TEXT FOR QUESTIONS =======//
 // var displayQn;
 $('#qn').text(gameA.currentQuestion);
