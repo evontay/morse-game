@@ -61,7 +61,7 @@ header {
 }
 
 header img {
-    margin: 5px 0 30px 0;
+    margin-bottom: 30px;
     
 }
 
@@ -114,6 +114,18 @@ button:hover {
     top: -400px;
     order: 1;
 }
+#pre {
+    flex:2;
+}
+
+.pregame h4 {
+    margin-bottom: 20px;
+}
+
+#pre img {
+    max-width: 70%;
+    border:30px solid white;
+}
 
 #testbox {
     width: 600px;
@@ -132,18 +144,14 @@ button:hover {
     height: 20px;
 }
 
-/*.smallbox img {
-    display: none;
-}*/
+
 
 .bigbox {
     transition: height 0.5s ease-out;
     height: 400px;
 }
 
-/*.bigbox img {
-    display: block;
-}*/
+
 
 
 #morsechart img {
@@ -240,7 +248,9 @@ form #playerinput {
     margin: 50px auto 30px;
     padding: 10px 20px;
     text-align: center;
+    letter-spacing: 3px;
 }
+
 
 #enter {
     color: white;

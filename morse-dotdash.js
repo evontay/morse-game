@@ -70,7 +70,7 @@ var time = function (){
         $('.count').html(timeLeft);
         if (timeLeft === 0) {
             clearInterval(interval);
-            $('#prompts').addClass('smaller').html("Ran out of chart viewing time. Good luck.");
+            $('#prompts').addClass('smaller').html("Oops. Ran out of chart time.");
             $('#testbox').hide();
             $('.hideshow').hide();
         }
@@ -81,10 +81,13 @@ var time = function (){
 
 //===== START BUTTON =====//
 $('#bigbtn').on('click', function(event){
+    $('#pre').hide();
     $('.pregame').addClass('disappear');
     $('#score').removeClass('disappear');
     $('#time').removeClass('disappear');
     $('#testbox').removeClass('bigbox');
+    $('.hideshow').removeClass('disappear');
+    $('#testbox').removeClass('disappear');
     $('#dotdashgame').removeClass('disappear');
     $('#qn h3').text(gameA.questions[gameA.currentQuestion].prompt);
     $('#prompts h3').text("Question " + (gameA.currentQuestion + 1) + " of " + numberOfQuestions());
@@ -106,7 +109,6 @@ var updateDisplay = function(){
     }
 };
 
-//===== UPDATES QUESTION PROMPTS =====//
 
 
 
@@ -118,11 +120,11 @@ var displayMsg = function(input) {
     if (gameA.questions[gameA.currentQuestion].correctAnswer === input)
     {
         console.log("correct:" + gameA.questions[gameA.currentQuestion].correctAnswer);
-        return 'Correct!';
+        return 'That is correct!';
     }
     else {
         console.log("displayMsg: Wrong!: " + gameA.questions[gameA.currentQuestion].correctAnswer);
-        return 'Wrong! Better luck for this next one.';
+        return 'Wrong! Try this next one.';
     }
 };
 
@@ -157,15 +159,21 @@ var isGameOver = function(){
 };
 
 //===== FUNCTION TO GET USER INPUT VALUE =====//
-$('#playerInput').keyup(function(){
-    this.value = this.value.toUpperCase();
+
+
+//get 'enter' key to submit answer!!!
+$("input").keypress(function(event){
+    if (event.which == 13) {
+        $("form").submit(input);
+    }
 });
 
 $('#enter').on('click', function(event) {
-    var input = $('#playerinput').val();
+    var input = $('#playerinput').val().toUpperCase();
     console.log("user input:" + input);
     console.log("player score:" + playerScore);
     $('#status').removeClass('disappear');
+    // $('#status').effect('shake');
     // reset form: $('#playerInput').reset();
     
     playTurn(input);
@@ -192,6 +200,7 @@ var playTurn = function(input){
         correct = false;
         console.log("playTurn no playerScore:" + gameA.playerScore);
         console.log("Playturn: Wrong. Better luck for this next one.");
+        
         displayMsg(input);
         $("#status").html(displayMsg(input));
         // to update displayMsg to say 'Wrong. Please try again'
