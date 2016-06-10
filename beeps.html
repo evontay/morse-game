@@ -45,10 +45,15 @@
             <div id="prompts" class="poppins"><h3></h3></div>
             
             <div id="qn" class="poppins">
-                <div id="beepqn">
-                    <img src="./img/play.svg"/>
-                    <audio preload="auto" id="audio0b"></audio>
-                    </div>
+                <h3></h3>
+                
+                <audio id="beepqn">
+                    <source src="./audio/audio0b.wav" type="audio/wav"/>
+                </audio>
+                
+                <div id="playbtn" >
+                    <img src="./img/play.svg" onclick="document.getElementById('beepqn').play();">
+                </div>
             </div>
             
             <form><input id="playerinput" type="text" placeholder="your answer" style="text-transform:uppercase" onkeydown="upperCase(this)"></form>
@@ -62,11 +67,10 @@
         </div>
     </main>
     
-    
-    
-    <script defer src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
-    
-    
+     <script defer src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+     
+     
     <script defer src="./morse-beeps.js"></script>
+    <!--<script defer src="./morse-dotdash.js"></script>-->
 </div></body>
 </html>
