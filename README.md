@@ -1,4 +1,7 @@
-# morse-game - WDI project 1B
+#The Morse Decoding Game 
+WDI project 1B
+
+Link to game: fumblies.github.io/morse-game
 
 This is a simple quiz game to help people learn Morse Code by practicing decoding it.
 
