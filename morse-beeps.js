@@ -82,6 +82,8 @@ var time = function (){
 //===== START BUTTON =====//
 $('#bigbtn').on('click', function(event){
     $('#pre').hide();
+    $('#learnchart').hide();
+    $('#pretitle').hide();
     $('.pregame').addClass('disappear');
     $('#score').removeClass('disappear');
     $('#time').removeClass('disappear');
@@ -92,7 +94,7 @@ $('#bigbtn').on('click', function(event){
     $('#qn h3').text(gameB.questions[gameB.currentQuestion].prompt);
     $('#prompts h3').text("Question " + (gameB.currentQuestion + 1) + " of " + numberOfQuestions());
     console.log("Question " + (gameB.currentQuestion + 1) + " of " + numberOfQuestions());
-    console.log(gameB.questions[gameB.currentQuestion]);
+    console.log(gameA.questions[gameB.currentQuestion]);
 });
 
 //====== UPDATES DISPLAY TEXT FOR QUESTIONS =======//

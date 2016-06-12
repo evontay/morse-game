@@ -80,7 +80,7 @@ button {
 }
 
 button:hover {
-    box-shadow: 0px 5px 5px 2px darkorange;
+    box-shadow: 0px 5px 5px 2px saddlebrown;
 }
 
 .gamemode {
@@ -136,7 +136,7 @@ button:hover {
     background-position: center;
     background-size: 100%;
     margin: 0 auto;
-    box-shadow: 3px 10px 10px -2px darkorange;
+    box-shadow: 3px 10px 10px -2px saddlebrown;
     
 }
 
@@ -154,7 +154,7 @@ button:hover {
 
 #morsechart img {
     width: 100%;
-    box-shadow: 3px 10px 10px -2px darkorange;
+    box-shadow: 3px 10px 10px -2px saddlebrown;
 }
 
 .hideshow {
@@ -216,7 +216,10 @@ strong {
 }
 
 #bigbtn:hover {
-    box-shadow: 0px 5px 5px 2px darkorange;
+    box-shadow: 0px 5px 5px 2px saddlebrown;
+    -webkit-transition: 0.2s ease-out;
+    -moz-transition: 0.2s ease-out;
+    transition: 0.2s ease-out;
 }
 
 .disappear {
@@ -248,14 +251,16 @@ strong {
     border-radius: 50%;
     background: white;
     margin:0 auto;
+    box-shadow: 0px 3px 2px -2px saddlebrown;
 }
 #playbtn:hover{
-   box-shadow: 0px 5px 5px 2px darkorange; 
+   box-shadow: 0px 5px 5px 2px saddlebrown; 
 }
 
 form #playerinput {
-    /*background: white;*/
-    border-bottom: 3px solid darkorange;
+    /*background: none;
+    border-bottom: 10px solid white;*/
+    box-shadow: 0px 2px 2px -1px saddlebrown; 
     height: 50px;
     width: 500px;
     font-size: 1.5em;
@@ -270,17 +275,21 @@ form #playerinput {
     color: white;
     letter-spacing: 2px;
     font-size: 1.3em;
-    background-color: FBB03B;
+    background-color: #FBB03B;
     padding: 13px 10px 8px 10px;
     border-radius: 50px;
     border: 4px solid white;
     max-width: 200px;
     margin: 30px auto;
     cursor: pointer;
+    box-shadow: 0px 3px 2px -2px saddlebrown;
 }
 
 #enter:hover {
-    box-shadow: 0px 5px 5px 2px darkorange;
+    box-shadow: 0px 5px 5px 2px saddlebrown;
+    -webkit-transition: 0.2s ease-out;
+    -moz-transition: 0.2s ease-out;
+    transition: 0.2s ease-out;
 }
 
 #status {
@@ -288,4 +297,46 @@ form #playerinput {
     font-size: 1.2em;
     font-family: 'Itim', sans-serif;
     text-transform: uppercase;
+}
+
+/*=== PREGAME PAGE ===*/
+#learnchart {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 70%;
+    margin: 0 auto;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+#learnchart img {
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 3px solid white;
+    box-shadow: 0px 3px 2px -2px saddlebrown;
+}
+
+#learnchart img:hover {
+    box-shadow: 0px 10px 10px -5px saddlebrown;
+    -webkit-transition: 0.2s ease-out;
+    -moz-transition: 0.2s ease-out;
+    transition: 0.2s ease-out;
+    
+}
+
+#pretitle {
+    color: white;
+    letter-spacing: 2px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.center {
+    margin: 0 auto;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
 }
