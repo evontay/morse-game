@@ -45,12 +45,12 @@ console.log("Beep App is running.");
         $('#testbox').toggleClass('bigbox');
    
         $('.count').html(timeLeft);
-         
-         if(interval!==0 && timeLeft!==0) {
-             clearInterval(interval);
-             return;
+         console.log("interval:" + interval);
+         if(interval===0 && timeLeft>0) {
+            time();
          } else {
-         time();
+           clearInterval(interval);
+           interval=0;
          }
     });
 });
@@ -66,10 +66,16 @@ console.log("Beep App is running.");
 var time = function (){
     
     interval = setInterval(function(){
-        timeLeft --;
+        //timeLeft --;
+        console.log("in time function:" + timeLeft);
+        if(timeLeft<=0) {
+            timeLeft=0;
+        } else {
+            timeLeft--;
+        }
         $('.count').html(timeLeft);
         if (timeLeft === 0) {
-            clearInterval(interval);
+            //clearInterval(interval);
             $('#prompts').addClass('smaller').html("Oops. Ran out of chart time.");
             $('#testbox').hide();
             $('.hideshow').hide();
@@ -94,7 +100,7 @@ $('#bigbtn').on('click', function(event){
     $('#qn h3').text(gameB.questions[gameB.currentQuestion].prompt);
     $('#prompts h3').text("Question " + (gameB.currentQuestion + 1) + " of " + numberOfQuestions());
     console.log("Question " + (gameB.currentQuestion + 1) + " of " + numberOfQuestions());
-    console.log(gameA.questions[gameB.currentQuestion]);
+    console.log(gameB.questions[gameB.currentQuestion]);
 });
 
 //====== UPDATES DISPLAY TEXT FOR QUESTIONS =======//
