@@ -45,12 +45,12 @@ console.log("App is running.");
         $('#testbox').toggleClass('bigbox');
    
         $('.count').html(timeLeft);
-         
-         if(interval!==0 && timeLeft!==0) {
-             clearInterval(interval);
-             return;
+         console.log("interval:" + interval);
+         if(interval === 0 && timeLeft > 0) {
+             time();
          } else {
-         time();
+               clearInterval(interval);
+               interval = 0;
          }
     });
 });
@@ -66,10 +66,15 @@ console.log("App is running.");
 var time = function (){
     
     interval = setInterval(function(){
-        timeLeft --;
+        console.log("in time function:" + timeLeft);
+        if(timeLeft <= 0) {
+            timeLeft = 0;
+        } else {
+            timeLeft--;
+        }
         $('.count').html(timeLeft);
         if (timeLeft === 0) {
-            clearInterval(interval);
+            // clearInterval(interval);
             $('#prompts').addClass('smaller').html("Oops. Ran out of chart time.");
             $('#testbox').hide();
             $('.hideshow').hide();
@@ -82,6 +87,8 @@ var time = function (){
 //===== START BUTTON =====//
 $('#bigbtn').on('click', function(event){
     $('#pre').hide();
+    $('#learnchart').hide();
+    $('#pretitle').hide();
     $('.pregame').addClass('disappear');
     $('#score').removeClass('disappear');
     $('#time').removeClass('disappear');
