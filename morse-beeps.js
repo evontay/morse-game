@@ -18,6 +18,8 @@ var question7b = new createQuestion ('audio7b', 'GOOD');
 var question8b = new createQuestion ('audio8b', 'HELLO');
 var question9b = new createQuestion ('audio9b', 'GO BACK');
 
+
+
 //===== AN OBJECT TO REPRESENT ALL GAME ELEMENTS TOGETHER =====/
 var gameB = {
     currentQuestion: 0,
@@ -44,13 +46,13 @@ console.log("Beep App is running.");
     $('.hideshow').on('click', function(event){
         $('#testbox').toggleClass('bigbox');
    
-        $('.count').html(timeLeft);
+        $('.count').html(timeLeft); //to update display
          console.log("interval:" + interval);
-         if(interval===0 && timeLeft>0) {
-            time();
+         if(interval===0 && timeLeft>0) { //if there is no timer & there is time left
+            time(); // run timer
          } else {
-           clearInterval(interval);
-           interval=0;
+           clearInterval(interval); //else pause timer
+           interval=0; // delete timer
          }
     });
 });
@@ -63,18 +65,19 @@ console.log("Beep App is running.");
 
 
 
-var time = function (){
+var time = function (){ //timer is a function
     
-    interval = setInterval(function(){
-        //timeLeft --;
-        console.log("in time function:" + timeLeft);
-        if(timeLeft<=0) {
-            timeLeft=0;
+    interval = setInterval(function(){ //set the timer
+        
+        console.log("in time function:" + timeLeft); 
+        if(timeLeft<=0) { // if no more time left
+            {clearInterval(interval);} //pause timer
+            timeLeft="chicken"; //forces timeLeft to stay at 0
         } else {
-            timeLeft--;
+            timeLeft--; //else minus seconds off timeleft
         }
-        $('.count').html(timeLeft);
-        if (timeLeft === 0) {
+        $('.count').html(timeLeft); //updates display
+        if (timeLeft === 0) { // when timeleft reaches 0, do the following...
             //clearInterval(interval);
             $('#prompts').addClass('smaller').html("Oops. Ran out of chart time.");
             $('#testbox').hide();
@@ -112,6 +115,8 @@ var updateDisplay = function(){
     }
     else {
         $('#qn h3').html(gameB.questions[gameB.currentQuestion].prompt);
+        $('#beepqn').html("<source src='./audio/" + gameB.questions[gameB.currentQuestion].prompt + ".wav' type='audio/wav'/>");
+        console.log("<source src='./audio/" + gameB.questions[gameB.currentQuestion].prompt + ".wav' type='audio/wav'/>");
         $('#prompts h3').html("Question " + (gameB.currentQuestion + 1) + " of " + numberOfQuestions());
         console.log(gameB.questions[gameB.currentQuestion]);
     }
