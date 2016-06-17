@@ -100,7 +100,7 @@ $('#bigbtn').on('click', function(event){
     $('.hideshow').removeClass('disappear');
     $('#testbox').removeClass('disappear');
     $('#dotdashgame').removeClass('disappear');
-    $('#qn h3').text(gameB.questions[gameB.currentQuestion].prompt);
+    $('#beepqn').html("<source src='./audio/" + gameB.questions[gameB.currentQuestion].prompt + ".wav' type='audio/wav'/>");
     $('#prompts h3').text("Question " + (gameB.currentQuestion + 1) + " of " + numberOfQuestions());
     console.log("Question " + (gameB.currentQuestion + 1) + " of " + numberOfQuestions());
     console.log(gameB.questions[gameB.currentQuestion]);
@@ -178,6 +178,7 @@ var isGameOver = function(){
 $("input").keypress(function(event){
     if (event.which == 13) {
         $("form").submit(input);
+        
     }
 });
 
@@ -186,9 +187,10 @@ $('#enter').on('click', function(event) {
     console.log("user input:" + input);
     console.log("player score:" + playerScore);
     $('#status').removeClass('disappear');
+    $("#playerinput").val('');
     // $('#status').effect('shake');
     // reset form: $('#playerInput').reset();
-    
+
     playTurn(input);
     updateDisplay();
        
