@@ -180,6 +180,7 @@ $('#enter').on('click', function(event) {
     console.log("user input:" + input);
     console.log("player score:" + playerScore);
     $('#status').removeClass('disappear');
+    $("#playerinput").val('');
     // $('#status').effect('shake');
     // reset form: $('#playerInput').reset();
     
