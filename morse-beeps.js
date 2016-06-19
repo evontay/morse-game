@@ -116,13 +116,17 @@ var updateDisplay = function(){
     else {
         $('#qn h3').html(gameB.questions[gameB.currentQuestion].prompt);
         $('#beepqn').html("<source src='./audio/" + gameB.questions[gameB.currentQuestion].prompt + ".wav' type='audio/wav'/>");
-        console.log("<source src='./audio/" + gameB.questions[gameB.currentQuestion].prompt + ".wav' type='audio/wav'/>");
+        console.log("updateDisplay1: <source src='./audio/" + gameB.questions[gameB.currentQuestion].prompt + ".wav' type='audio/wav'/>");
         $('#prompts h3').html("Question " + (gameB.currentQuestion + 1) + " of " + numberOfQuestions());
-        console.log(gameB.questions[gameB.currentQuestion]);
+        console.log("updateDisplay2: " + gameB.questions[gameB.currentQuestion].prompt);
     }
 };
 
-
+//==== PLAY AUDIO QUESTION BUTTON ====//
+var play = function(){
+    document.getElementById('beepqn').play();
+    console.log("play button: " + $('#beepqn'));
+};
 
 
 //====== UPDATES DISPLAY TEXT FOR MESSAGES =======//
@@ -133,10 +137,10 @@ var displayMsg = function(input) {
     if (gameB.questions[gameB.currentQuestion].correctAnswer === input)
     {
         console.log("correct:" + gameB.questions[gameB.currentQuestion].correctAnswer);
-        return 'That is correct!';
+        return "Awesome! That's correct!";
     }
     else {
-        console.log("displayMsg: Wrong!: " + gameB.questions[gameB.currentQuestion].correctAnswer);
+        console.log("displayMsg: Wrong! Ans: " + gameB.questions[gameB.currentQuestion].correctAnswer);
         return 'Wrong! Try this next one.';
     }
 };
@@ -160,7 +164,7 @@ var numberOfQuestions = function (){
 
 
 
-//===== FUNCTION TO CALL CORRECT ANSWER FROM THE GAME A OBJECT =====//
+//===== FUNCTION TO CALL CORRECT ANSWER FROM THE GAME B OBJECT =====//
 var correctAnswer = function(){
     return gameB.questions[gameB.currentQuestion].correctAnswer;
 };
@@ -171,30 +175,6 @@ var isGameOver = function(){
     return gameB.isGameOver;    
 };
 
-//===== FUNCTION TO GET USER INPUT VALUE =====//
-
-
-//get 'enter' key to submit answer!!!
-$("input").keypress(function(event){
-    if (event.which == 13) {
-        $("form").submit(input);
-        
-    }
-});
-
-$('#enter').on('click', function(event) {
-    var input = $('#playerinput').val().toUpperCase();
-    console.log("user input:" + input);
-    console.log("player score:" + playerScore);
-    $('#status').removeClass('disappear');
-    $("#playerinput").val('');
-    // $('#status').effect('shake');
-    // reset form: $('#playerInput').reset();
-
-    playTurn(input);
-    updateDisplay();
-       
-});
 
 
 //===== PLAY TURN =====//
@@ -227,18 +207,41 @@ var playTurn = function(input){
         gameB.isGameOver = true;
         
     }
-    // return correct;
+    
 };
 
+//===== FUNCTION TO GET USER INPUT VALUE =====//
 
+
+//get 'enter' key to submit answer!!!
+$("input").keypress(function(event){
+    if (event.which == 13) {
+        $("form").submit(input);
+        
+    }
+});
+
+$('#enter').on('click', function(event) {
+    var input = $('#playerinput').val().toUpperCase();
+    console.log("user input:" + input);
+    console.log("player score:" + playerScore);
+    $('#status').removeClass('disappear');
+    $("#playerinput").val('');
+    // $('#status').effect('shake');
+    // reset form: $('#playerInput').reset();
+
+    playTurn(input);
+    updateDisplay();
+       
+});
 
 
 //===== GAME RESTART =====//
 var restart = function() {
     console.log('restarts game and timer.');
-    timer = 60;
+    timeLeft = 60;
     gameB.currentQuestion = 0;
     gameB.isGameOver = false;
     gameB.playerScore = 0;
-    updateMainDisplay();
+    // updateMainDisplay();
 };
