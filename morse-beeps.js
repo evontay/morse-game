@@ -72,14 +72,20 @@ var time = function (){ //timer is a function
         console.log("in time function:" + timeLeft); 
         if(timeLeft<=0) { // if no more time left
             {clearInterval(interval);} //pause timer
-            timeLeft="chicken"; //forces timeLeft to stay at 0
+            timeLeft="0"; //forces timeLeft to stay at 0
         } else {
             timeLeft--; //else minus seconds off timeleft
         }
         $('.count').html(timeLeft); //updates display
+        
+        if (timeLeft === 10) {
+            $('.count').css("color", "red");
+            $('.count').css("font-size", "2em");
+        }
+        
         if (timeLeft === 0) { // when timeleft reaches 0, do the following...
             //clearInterval(interval);
-            $('#prompts').addClass('smaller').html("Oops. Ran out of chart time.");
+            $('#prompts').addClass('smaller').html("No more chart time, but do go on!");
             $('#testbox').hide();
             $('.hideshow').hide();
         }
@@ -100,7 +106,6 @@ $('#bigbtn').on('click', function(event){
     $('.hideshow').removeClass('disappear');
     $('#testbox').removeClass('disappear');
     $('#dotdashgame').removeClass('disappear');
-    // $('#beepqn').html("");
     $('#beepqn').html("<source src='./audio/" + gameB.questions[gameB.currentQuestion].prompt + ".wav' type='audio/wav'/>");
     $('#prompts h3').text("Question " + (gameB.currentQuestion + 1) + " of " + numberOfQuestions());
     console.log("Question " + (gameB.currentQuestion + 1) + " of " + numberOfQuestions());
@@ -110,13 +115,17 @@ $('#bigbtn').on('click', function(event){
 //====== UPDATES DISPLAY TEXT FOR QUESTIONS =======//
 var updateDisplay = function(){
     if (gameB.isGameOver === true) {
-        $('#qn h3').html("");
         $('#prompts h3').html("Game is over.");
         $('#status').hide();
+        $('form').hide();
+        $('#playbtn').hide();
+        $('#enter h3').text('Restart?');
+        $('#enter').on('click', function(event){
+            window.location = "./index.html";
+        });
+        
     }
     else {
-        $('#qn h3').html(gameB.questions[gameB.currentQuestion].prompt);
-        //$('#beepqn').html("");
         $('#beepqn').html("<source src='./audio/" + gameB.questions[gameB.currentQuestion].prompt + ".wav' type='audio/wav'/>");
         console.log("updateDisplay1: <source src='./audio/" + gameB.questions[gameB.currentQuestion].prompt + ".wav' type='audio/wav'/>");
         
@@ -220,10 +229,29 @@ var playTurn = function(input){
 
 
 //get 'enter' key to submit answer!!!
-$("input").keypress(function(event){
-    if (event.which == 13) {
-        $("form").submit(input);
+// $(document).keypress(function(e) {
+//     if(e.which == 13) {
+//         event.preventDefault();
+//         alert('You pressed enter!');
         
+//     }
+// });
+$("form :input").attr("autocomplete", "off");
+
+
+$("input").keypress(function(event){
+    if (event.which === 13) {
+        event.preventDefault();
+        // alert('You pressed enter!');
+        // $("form").submit(input);
+        var input = $('#playerinput').val().toUpperCase();
+        console.log("user input:" + input);
+        console.log("player score:" + playerScore);
+        $('#status').removeClass('disappear');
+        $("#playerinput").val('');
+        
+        playTurn(input);
+        updateDisplay();
     }
 });
 

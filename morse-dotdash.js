@@ -167,11 +167,22 @@ var isGameOver = function(){
 
 //===== FUNCTION TO GET USER INPUT VALUE =====//
 
+$("form :input").attr("autocomplete", "off");
 
-//get 'enter' key to submit answer!!!
+
 $("input").keypress(function(event){
-    if (event.which == 13) {
-        $("form").submit(input);
+    if (event.which === 13) {
+        event.preventDefault();
+        // alert('You pressed enter!');
+        // $("form").submit(input);
+        var input = $('#playerinput').val().toUpperCase();
+        console.log("user input:" + input);
+        console.log("player score:" + playerScore);
+        $('#status').removeClass('disappear');
+        $("#playerinput").val('');
+        
+        playTurn(input);
+        updateDisplay();
     }
 });
 
