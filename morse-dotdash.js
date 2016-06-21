@@ -73,9 +73,14 @@ var time = function (){
             timeLeft--;
         }
         $('.count').html(timeLeft);
+
+        if (timeLeft === 10) {
+            $('.count').css("color", "red");
+            $('.count').css("font-size", "2em");
+        }
+
         if (timeLeft === 0) {
-            // clearInterval(interval);
-            $('#prompts').addClass('smaller').html("Oops. Ran out of chart time.");
+            $('#chartmsg').removeClass("disappear");
             $('#testbox').hide();
             $('.hideshow').hide();
         }
@@ -107,7 +112,16 @@ var updateDisplay = function(){
     if (gameA.isGameOver === true) {
         $('#qn h3').html("");
         $('#prompts h3').html("Game is over.");
+        $('#chartmsg').hide();
+        $('#chartmsg').addClass('disappear');
         $('#status').hide();
+        $('form').hide();
+        $('#playbtn').hide();
+        $('#enter h3').text('Restart?');
+        $('#enter').on('click', function(event){
+            window.location = "./index.html";
+        });
+            
     }
     else {
         $('#qn h3').html(gameA.questions[gameA.currentQuestion].prompt);
@@ -115,6 +129,9 @@ var updateDisplay = function(){
         console.log(gameA.questions[gameA.currentQuestion]);
     }
 };
+
+
+
 
 
 

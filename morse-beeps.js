@@ -85,7 +85,8 @@ var time = function (){ //timer is a function
         
         if (timeLeft === 0) { // when timeleft reaches 0, do the following...
             //clearInterval(interval);
-            $('#prompts').addClass('smaller').html("No more chart time, but do go on!");
+            // $('#prompts').addClass('smaller').html("No more chart time, but do go on!");
+            $('#chartmsg').removeClass("disappear");
             $('#testbox').hide();
             $('.hideshow').hide();
         }
@@ -116,6 +117,8 @@ $('#bigbtn').on('click', function(event){
 var updateDisplay = function(){
     if (gameB.isGameOver === true) {
         $('#prompts h3').html("Game is over.");
+        $('#chartmsg').hide();
+        $('#chartmsg').addClass('disappear');
         $('#status').hide();
         $('form').hide();
         $('#playbtn').hide();

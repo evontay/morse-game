@@ -232,6 +232,11 @@ strong {
     
 }
 
+#chartmsg h5 {
+    color: darkslategrey;
+    margin: 20px auto;
+}
+
 .smaller {
     font-size: 1.5em;
     font-weight:700;
