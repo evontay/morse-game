@@ -100,6 +100,7 @@ $('#bigbtn').on('click', function(event){
     $('.hideshow').removeClass('disappear');
     $('#testbox').removeClass('disappear');
     $('#dotdashgame').removeClass('disappear');
+    // $('#beepqn').html("");
     $('#beepqn').html("<source src='./audio/" + gameB.questions[gameB.currentQuestion].prompt + ".wav' type='audio/wav'/>");
     $('#prompts h3').text("Question " + (gameB.currentQuestion + 1) + " of " + numberOfQuestions());
     console.log("Question " + (gameB.currentQuestion + 1) + " of " + numberOfQuestions());
@@ -115,8 +116,10 @@ var updateDisplay = function(){
     }
     else {
         $('#qn h3').html(gameB.questions[gameB.currentQuestion].prompt);
+        //$('#beepqn').html("");
         $('#beepqn').html("<source src='./audio/" + gameB.questions[gameB.currentQuestion].prompt + ".wav' type='audio/wav'/>");
         console.log("updateDisplay1: <source src='./audio/" + gameB.questions[gameB.currentQuestion].prompt + ".wav' type='audio/wav'/>");
+        
         $('#prompts h3').html("Question " + (gameB.currentQuestion + 1) + " of " + numberOfQuestions());
         console.log("updateDisplay2: " + gameB.questions[gameB.currentQuestion].prompt);
     }
@@ -124,8 +127,10 @@ var updateDisplay = function(){
 
 //==== PLAY AUDIO QUESTION BUTTON ====//
 var play = function(){
-    document.getElementById('beepqn').play();
-    console.log("play button: " + $('#beepqn'));
+    console.log("CurrentQn " + gameB.currentQuestion);
+    document.getElementById('audio' + gameB.currentQuestion + 'b').play();
+    console.log("play button: " + 'audio' + gameB.currentQuestion + 'b');
+    
 };
 
 
@@ -203,6 +208,7 @@ var playTurn = function(input){
         //if currentQuestion is wrong for more than 3x, go to next qn.
     }
     ++ gameB.currentQuestion;
+    $('#beepqn').html("");
     if (gameB.currentQuestion === numberOfQuestions()) {
         gameB.isGameOver = true;
         
