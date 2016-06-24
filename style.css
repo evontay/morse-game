@@ -65,6 +65,11 @@ header img {
     
 }
 
+.logo {
+    width: 100%;
+    max-width: 500px;
+}
+
 .instructions {
     margin: 80px 0 20px 0;
     font-size: 1.2em;
@@ -275,6 +280,9 @@ form #playerinput {
     letter-spacing: 3px;
 }
 
+.peek {
+    margin-bottom: -30px;
+}
 
 #enter {
     color: white;

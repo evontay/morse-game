@@ -51,7 +51,7 @@
     <audio preload="auto" id="fullstop-btn"><source src="./audio/fullstop-btn.wav" type="audio/wav"/></audio>
     
     <div id="container">
-        <h3 id="pretitle" class="poppins">International Morse Code</h3>
+        <h3 id="pretitle" class="poppins">Learn Morse Code</h3>
         <div id="learnchart">
             <img src="./img/a-btn.svg" onclick="document.getElementById('a-btn').play();">
             <img src="./img/b-btn.svg" onclick="document.getElementById('b-btn').play();">
@@ -97,7 +97,6 @@
         <header class="gamemode poppins">
             
         <div id="morsechart">
-            <!--<div id="pre" ><img src="./img/morsechart.svg"/></div>-->
             <div id="testbox" class="smallbox disappear"></div>
             <div class="hideshow disappear"><p>Hide/Show</p></div>
         </div>
@@ -120,7 +119,6 @@
         <p class="hand">During gameplay if you need to, toggle <strong>HIDE/SHOW</strong> to refer to it again. <br>
         But watch out. You only have 60 seconds of total chart view time during the game, use it wisely.</p>
         
-        <!--<h5 class="poppins">When you're ready to play, click start.</h5>-->
         
         <a><div id="bigbtn" class="poppins"><h3>Start</h3></div></a>
         </div>
@@ -139,6 +137,7 @@
             
             <div id="status" class="hand disappear">Correct!</div>
             
+            <img class="peek disappear" src="./img/curio_peek.svg"/>
             <div id="enter" class="poppins">
                 <h3>Enter</h3>
             </div>
@@ -149,7 +148,8 @@
     
     
     <script defer src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
-    
+    <script defer src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"   integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw="   crossorigin="anonymous"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     
     <script defer src="./morse-dotdash.js"></script>
 </div></body>
